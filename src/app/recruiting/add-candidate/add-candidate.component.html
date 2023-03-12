@@ -1,0 +1,15 @@
+<!--reactive forms example here-->
+
+<!--10. create forms here, create button with click function and to to add-candidate.component.ts-->
+<form [formGroup]="addCandidateFormGroup" (ngSubmit)="submitData()">
+    <input type="text" formControlName="firstName"/>
+    <!--15, add this type of validation as well-->
+    <span *ngIf="addCandidateFormGroup.errors?.['required']"></span>
+    <input type="text" formControlName="lastName"/>
+
+    <button type="button" [disabled]="!addCandidateFormGroup.valid" (click)="addCandidate()">Save</button>
+
+    <button type="button" (click)="loadData()">Load Data</button>
+
+    <button type="submit">Submit</button>
+</form>

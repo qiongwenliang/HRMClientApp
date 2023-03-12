@@ -1,0 +1,34 @@
+<div class="container">
+  <!--1. below #loginForm="ngForm" is to create template reference variable, then go to auth.module.ts-->
+  <!--6. create a event for the submit login button, then go the login.component.ts-->
+  <form #loginForm="ngForm" (submit)="loginUser(loginForm)">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+
+        <!--4. bind the properties here-->
+        <input type="email" required="Required" name="emailId" [(ngModel)]="loginObj.emailId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <!--if ngModel is used within a form tag, the name attribute must be set-->
+
+
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" minlength="5" name="password" [(ngModel)]="loginObj.password" class="form-control" id="exampleInputPassword1" required/>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <!--if the user information is correct, then this submit button has a click function to redirect to another place-->
+      <!-- <button type="button" (click)="loginUser()" class="btn btn-primary">Submit</button> -->
+
+
+      <!--5. create a new button, when the type is submit, we should declare it in form tag-->
+      <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
+      
+      <button type="button" class="btn btn-warning" (click)="resetForm(loginForm)">Reset</button>
+
+      <button type="button" class="btn btn-success" (click)="loadData(loginForm)">Load Data</button>
+
+    </form>
+</div>

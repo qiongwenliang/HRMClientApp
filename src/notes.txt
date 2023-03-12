@@ -1,0 +1,68 @@
+We do not need routing file for component, we need routing file for module. routing file is a module, not a component, and in it it loads different modules.
+
+
+Why are we creating two different layers, one only for layout and two modules connect to the layout?
+    -- Because we want to load all the modules seperately, which may contain different content, and layout will be different for each module. 
+        (in our index.html, we'll put bootstrap)
+
+
+
+
+Type of route guard:
+Route Guards are interfaces which can check whether the user has permission to access a particular route or not.
+    1. CanActive - Checks to see if a user can use this rout or not
+    2. CanActive Child - checks to see if a user can visit a children route or not
+    3. CanLoad - Checks to see if a user can visit a module, this is for lazyloading module
+    4. CanDeactive - Checks to see if a user can leave a route 
+
+--create a guard file in src, just put guards then that's it
+--next run ng g guard guards/auth command
+--then you will be asked what type of guard you want to create
+
+
+
+
+Angular Forms
+    - Template driven form / static Forms
+        1. easy to use
+        2. FormsModule must be imported in the app module file to work
+        3. All the validations are handled inside the template file
+        4. To work with template driven form we need to use ngForm and ngModel
+        5. Create a template reference variable which will be written with # symbol(#ngForm will be created directly in html in form tag)
+        (in template driven form, formGroup and formControl will be automatically created when check in console in inspect)
+        (examples are made with auth login number 1-7)
+
+    - Reactive forms / dynamic forms (!!!interview questions, always ask how to create reactive form)
+        1. more complex than emplate driven forms
+        2. ReactiveFormsModule must be imported in the app module file 
+        3. All the control creation/validation logic must be handled in component
+        4. These forms works better in data binding 
+        5. Regular expressions can be used for error handling
+        6. To create reactive forms we need to use formGroup and formControl (FormGroup will be created directly in html in form tag)
+         - to use number 6, you also need to check the control state information
+            -- ng-touched
+            -- ng-dirty
+            -- ng-pristine
+            -- ng-validation
+            -- ng-untouched
+            -- ng-unvalid
+        (example are made with recruiting module number 8-15)
+
+            Reactive Forms:
+            1. Specify a form, and define elements/controls
+                - Input type text
+                - Select
+                - TextArea
+                - Image
+                - Radiobutton
+                - Checkbox
+
+            2. Specify a FormGroup, where you can have more than one form control but at least one
+
+            On one form you can have multiple forms
+
+            !!!Validation - will be handled inside the component, that is the add-candidate component in ts file. 
+
+
+!!!To set a value to the form, you must do it in ngOnInt() which is called the actual work, but the initialization of an object must be done constructor.
+
